@@ -72,7 +72,7 @@ addDelEvent();
  * 6、单选点满，全选点亮
  */
 
-//随机生成UID函数 randomUID
+//随机生成UID函数 randomUID1
 function randomUID(randomLength) {
     // body
     return Number(Math.random().toString().substr(3, randomLength) + Date.now()).toString(36)
