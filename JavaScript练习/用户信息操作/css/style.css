@@ -1,0 +1,14 @@
+table{
+    width: 80%;
+    border-collapse:collapse;
+    text-align: center
+}
+thead{
+    font-weight: bolder
+}
+tr{
+    border-bottom: 2px salmon solid;
+}
+tbody tr:hover{
+    background: burlywood;
+}
