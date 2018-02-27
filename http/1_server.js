@@ -12,5 +12,5 @@ http.createServer(function(req,res) {
 	res.end('访问成功')
 	console.log('数据访问')
 	//监听3000端口 ip127.0.0.1
-}).listen(3000,'127.0.0.1');
+}).listen(4000,'127.0.0.1');
 console.log('服务器启动成功');
