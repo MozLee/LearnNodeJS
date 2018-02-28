@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽小方块</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: rgb(100%, 54.9%, 0%);
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        const box = document.querySelector('div');
+
+        box.onmousedown = (e)=>{
+            let disX = e.clientX - box.offsetLeft;
+            let disY = e.clientY - box.offsetTop;
+           // console.log(disX,disY)
+            document.onmousemove  = (e)=>{
+                console.log(disX)
+                let left = e.clientX - disX;
+                let top = e.clientY - disY;
+                box.style.left = left +'px';
+                box.style.top = top + 'px';
+            }
+            document.onmouseup = ()=>{
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html>
