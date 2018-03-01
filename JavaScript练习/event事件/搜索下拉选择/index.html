@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .search-group {
+            width: 260px;
+            height: 10px;
+            padding: 5px;
+            border: 1px solid transparent;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            background: rgb(100%, 38.8%, 27.8%);
+            position: relative;
+        }
+
+        .bottom {
+            width: 260px;
+            height: 10px;
+            padding: 5px;
+            border: 1px solid transparent;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background: rgb(100%, 38.8%, 27.8%);
+        }
+
+        #search {
+            width: 200px;
+            height: 30px;
+            padding: 0;
+            margin: 0;
+            border-radius: 40px;
+            border: 1px solid #fff;
+            text-indent: 1em;
+            background: rgb(82.7%, 82.7%, 82.7%);
+        }
+
+        #search:focus {
+            border-color: rgb(60.4%, 80.4%, 19.6%);
+            outline: none;
+            background: #fff;
+        }
+
+        #btn {
+            width: 40px;
+            height: 30px;
+        }
+
+        .middle {
+            padding: 6px;
+            width: 260px;
+            height: auto;
+            background: rgb(100%, 38.8%, 27.8%);
+            display: none;
+        }
+        li{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-indent: 1em;
+        }
+        ul{
+            margin: 18px 0 0 0;
+            padding: 0;
+        }
+        li:hover{
+            background: rgb(100%, 100%, 100%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-group">
+        <input type="text" id="search">
+        <button id="btn">搜索</button>
+    </div>
+    <div class="middle">
+        <ul id="list">
+        </ul>
+    </div>
+    <div class="bottom"></div>
+</body>
+
+</html>
