@@ -57,17 +57,20 @@
             background: rgb(100%, 38.8%, 27.8%);
             display: none;
         }
-        li{
+
+        li {
             list-style: none;
             padding: 0;
             margin: 0;
             text-indent: 1em;
         }
-        ul{
+
+        ul {
             margin: 18px 0 0 0;
             padding: 0;
         }
-        li:hover{
+
+        li:hover {
             background: rgb(100%, 100%, 100%);
 
         }
@@ -84,6 +87,28 @@
         </ul>
     </div>
     <div class="bottom"></div>
+    <script>
+        //获取元素
+        const searchInput = document.querySelector('#search');
+        const middleDiv = document.querySelector('.middle');
+        const lists = document.querySelector('#list');
+        //获取数据
+        let data = ['JavaScript', "ECMAScript", "NodeJS", "Vue", "TypeScript"];
+        //渲染数据
+        data.forEach((item) => {
+            lists.innerHTML += `<li>${item}</li>`
+        })
+        searchInput.onclick = () => {
+            middleDiv.style.display = 'block';
+            middleDiv.addEventListener('click', (e) => {
+                //事件委托
+                if (e.target.nodeName === 'LI') {
+                    searchInput.value = e.target.innerHTML;
+                    middleDiv.style.display='none'
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
