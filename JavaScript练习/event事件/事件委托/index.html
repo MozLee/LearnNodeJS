@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button id="add-btn">添加</button>
+    <ul id="list">
+        <li>说点啥呢<button>删除</button></li>
+        <li>说点啥呢<button>删除</button></li>
+        <li>说点啥呢<button>删除</button></li>
+    </ul>
+    <script>
+        const text = document.querySelector("input");
+        const addBtn = document.querySelector('#add-btn');
+        const list = document.querySelector('#list');
+
+        addBtn.onclick = ()=>{
+            list.innerHTML+=`
+                 <li>${text.value}<button>删除</button></li>
+            `
+        }
+        //事件委托给父级 给li添加删除事件
+        list.addEventListener('click',(ev)=>{
+            if(ev.target.nodeName === "BUTTON"){
+                ev.target.parentNode.remove();
+            }
+        })
+    </script>
+</body>
+</html>
