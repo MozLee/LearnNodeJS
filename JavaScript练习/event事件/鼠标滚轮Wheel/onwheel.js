@@ -5,9 +5,9 @@
  * @param {向上滚动触发的回调函数} wheelUpFn 
  * @param {向下滚动出发的回调函数} wheelDownFn 
  */
-function onMouseWheel (element,wheelUpFn,wheelDownFn) {
-    element.addEventListener('mousewheel',wheel);
-    element.addEventListener('DOMMouseScroll',wheel);
+function onMouseWheel(element, wheelUpFn, wheelDownFn) {
+    element.addEventListener('mousewheel', wheel);
+    element.addEventListener('DOMMouseScroll', wheel);
     // body
     function wheel(e) {
         let der = true; //deraction 默认为true 向上方向
@@ -16,11 +16,14 @@ function onMouseWheel (element,wheelUpFn,wheelDownFn) {
         } else if (e.detail) { //firefox兼容
             d = e.detail < 0 ? true : false;
         }
-        //TODO判断是否传入函数以及修改函数中this指向以及
-        //FIXME:写入判断函数函数
-        if(der){
+        
+        if (der) {
+            typeof wheelUpFn === 'function' && wheelUpFn();
             console.log('向上');
-        }else{
+            wheelUpFn.call(this, e);
+        } else {
+            typeof wheelDownFn === 'function' && wheelDownFn();
+            wheelDownFn.call(this,e);
             console.log('向下');
         }
     }
