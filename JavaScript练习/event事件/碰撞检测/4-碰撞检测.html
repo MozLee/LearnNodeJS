@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				background: red;
+				margin: 10px;
+				float: left;
+			}
+			.line {
+				width: 150px;
+				height: 150px;
+				background: yellow;
+				border: 1px solid #000;
+				position: absolute;
+				left: 100px;
+				top: 200px;
+				margin: 0;
+				opacity: .5;
+			}
+		</style>
+		<script>
+			function getRect(element){
+				return element.getBoundingClientRect();
+			}
+			function isDung(box1,box2){
+				var getBox1Rect = getRect(box1);
+				var getBox2Rect = getRect(box2);
+				if( 	
+						getBox1Rect.right < getBox2Rect.left || 
+						getBox1Rect.bottom < getBox2Rect.top || 
+						getBox1Rect.left > getBox2Rect.right ||
+						getBox1Rect.top > getBox2Rect.bottom
+				  ){
+					return false
+				}else{
+					return true;
+				}		
+			}
+		</script>
+	</head>
+
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+
+		<section class="line"></section>
+		<script>
+			var line = document.querySelector('.line');
+			var allDiv = document.querySelectorAll('div');
+
+			line.onmousedown = function (ev){
+				var disX = ev.clientX - line.offsetLeft;
+				var disY = ev.clientY - line.offsetTop;
+
+				document.onmousemove = function (ev){
+					line.style.left = ev.clientX - disX + 'px';	
+					line.style.top = ev.clientY - disY + 'px';
+					var arr = [];
+
+					// 那些div和拖拽的元素碰上了，就算中心位置最近的
+
+					for( var i = 0; i < allDiv.length; i++ ){
+						if(isDung(line,allDiv[i])){
+							console.log('碰上了');
+							allDiv[i].style.background = 'yellow';
+							arr.push(allDiv[i])
+						}else{
+							console.log('没碰上');
+							allDiv[i].style.background = 'red'
+						}
+					}
+
+					// 计算那些碰上元素的中间位置
+					// 中心点 = 元素到浏览器左边的距离 + 自身宽度的一半
+					console.log(arr);
+					if(arr.length > 1){
+						var min = 999999999;
+						var el = null;
+						for( var j = 0; j < arr.length; j++ ){
+							console.log(arr[j]);
+							var centerX = getRect(arr[j]).left + arr[j].offsetWidth/2;
+							var centerY = getRect(arr[j]).top + arr[j].offsetHeight/2;
+
+							var LineCenterX = getRect(line).left + line.offsetWidth/2;
+							var LineCenterY = getRect(line).top + line.offsetHeight/2;
+
+							var z = Math.pow(centerX - LineCenterX,2) + Math.pow(centerY - LineCenterY,2)
+							// 斜边是5000
+							// 斜边 4000
+							// 斜边100000
+							if(z < min){
+								min = z;
+								el = arr[j];
+							}
+						}
+
+						if(el){
+							el.style.background = 'pink';
+						}
+					}
+
+				}
+				document.onmouseup = function (ev){
+					document.onmousemove = document.onmouseup = null; 
+				}
+			}
+
+		</script>
+	</body>
+</html>
