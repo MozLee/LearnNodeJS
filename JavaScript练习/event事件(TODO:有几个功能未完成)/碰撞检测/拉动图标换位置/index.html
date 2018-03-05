@@ -31,7 +31,7 @@
             border: 2px solid #fff;
             border-radius: 4px;
             font-size: 18px;
-            element-height: 38px;
+            line-height: 38px;
             text-align: center;
             color: #fff;
             position: absolute;
@@ -55,9 +55,11 @@
         #picBox div {
             width: 100px;
             height: 100px;
-            position: relative;
-            float: left;
-            margin: 7px;
+            position: absolute;
+        }
+
+        .animate {
+            transition: .4s;
         }
     </style>
 </head>
@@ -83,6 +85,61 @@
         </div>
     </div>
     <script>
+        //渲染div的位置
+        const divs = document.querySelectorAll("#picBox div");
+        let divWidth = divs[0].offsetWidth;
+        let n = 0;
+        let n2 = 0;
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.left = n * (divWidth + 7) + 'px';
+            divs[i].style.top = n2 * (divWidth + 7) + 'px'
+            n++;
+            if (n % 4 == 0 && n > 0) {
+                n = 0;
+                n2++;
+            }
+        }
+        let posiArr = [];
+        //获取所有定位
+        for (var i = 0; i < divs.length; i++) {
+            posiArr.push({
+                left: divs[i].offsetLeft,
+                top: divs[i].offsetTop
+            })
+        }
+        const btn = document.querySelector('#btn');
+        btn.onclick = () => {
+            //随机排列数组
+            let newArr = shuffle(posiArr);
+            //console.log(newArr);
+            for (var i = 0; i < newArr.length; i++) {
+                console.log(newArr[i].left);
+                //添加动画
+                divs[i].classList.add("animate")
+                divs[i].style.left = newArr[i].left + 'px';
+                divs[i].style.top = newArr[i].top + 'px';
+            }
+            //清除动画
+            setTimeout(() => {
+                for (let i = 0; i < divs.length; i++) {
+                    divs[i].classList.remove("animate");
+                }
+            }, 500)
+        }
+        //随机洗牌算法
+        function shuffle(arr) {
+            const length = arr.length;
+            let index;
+            // 执行length-1次即可，i=0时替换的是自身，这么做没有意义
+            for (let i = length - 1; i; i--) {
+                // 选取0到i-1中的一个位置
+                index = Math.floor(Math.random() * i);
+                // 与i位置的值互换
+                arr[i] = arr.splice(index, 1, arr[i])[0];
+            }
+            return arr
+        }
+        //添加碰撞检测函数
         function getRect(element) {
             return element.getBoundingClientRect();
         }
@@ -103,77 +160,84 @@
         }
     </script>
     <script>
+        //给所有DIV添加change函数
         let allDiv = document.querySelectorAll('#picBox div');
-        for(let i = 0;i<allDiv.length;i++){
+
+        let el = null; //el用于记录碰撞最近的DIV
+        for (let i = 0; i < allDiv.length; i++) {
             change(allDiv[i])
         }
+        //change函数用于检测最近的碰撞DIV
         function change(element) {
             element.onmousedown = function (ev) {
+                //元素MOVE的时候Z-INDEX最大
+                element.style.zIndex = 999;
                 let thisDiv = this;
-                let oriX = element.offsetLeft - parseInt(getComputedStyle(this).marginLeft);
-                console.log(oriX);
-                let oriY = element.offsetTop - parseInt(getComputedStyle(this).marginTop);
+                //记录元素最开始的位置
+                let oriX = element.offsetLeft
+                let oriY = element.offsetTop
                 let disX = ev.clientX - element.offsetLeft;
                 let disY = ev.clientY - element.offsetTop;
-
                 document.onmousemove = function (ev) {
                     element.style.left = ev.clientX - disX + 'px';
                     element.style.top = ev.clientY - disY + 'px';
                     let arr = [];
-
-                    // 那些div和拖拽的元素碰上了，就算中心位置最近的
-
+                    // 将碰撞到的元素添加至arr数组中
                     for (let i = 0; i < allDiv.length; i++) {
                         if (isDung(element, allDiv[i])) {
-                            console.log(oriX,oriY);
-                            arr.push(allDiv[i])
-                        } else {
-                            //console.log('没碰上');
+                            //console.log(oriX,oriY);
+                            arr.push(allDiv[i]);
                         }
                     }
-
-                    // 计算那些碰上元素的中间位置
+                    // 计算最近的碰撞div
                     // 中心点 = 元素到浏览器左边的距离 + 自身宽度的一半
-                    //console.log(arr);
-                    if (arr.length > 0) {
-                        let min = 999999999;
-                        let el = null;
+                    if (arr.length > 1) {
+                        let min = 99999999999;
                         for (let j = 0; j < arr.length; j++) {
+                            if (arr[j] === thisDiv) continue;
                             //console.log(arr[j]);
                             let centerX = getRect(arr[j]).left + arr[j].offsetWidth / 2;
                             let centerY = getRect(arr[j]).top + arr[j].offsetHeight / 2;
-
                             let elementCenterX = getRect(element).left + element.offsetWidth / 2;
                             let elementCenterY = getRect(element).top + element.offsetHeight / 2;
-
                             let z = Math.pow(centerX - elementCenterX, 2) + Math.pow(centerY - elementCenterY,
                                 2)
-                            // 斜边是5000
-                            // 斜边 4000
-                            // 斜边100000
                             if (z < min) {
                                 min = z;
                                 el = arr[j];
                             }
                         }
-
-                        if (el) {
-                            if(el === thisDiv){
-                                console.log(111);
-                                document.onmouseup = function(){
-                                    el.style.left = oriX + "px";
-                                    el.style.top = oriY + 'px';
-                                    document.onmousemove = document.onmouseup = null;
-                                }
-                            }
-                            //el.style.background = 'pink';
-                        }
                     }
 
                 }
                 document.onmouseup = function (ev) {
+                    //鼠标抬起时如果el存在
+                    if (el) {
+                        console.log(el);
+                        //添加动画
+                        el.classList.add('animate');
+                        thisDiv.classList.add('animate');
+                        //与最近的DIV互换定位值
+                        thisDiv.style.left = el.style.left;
+                        thisDiv.style.top = el.style.top;
+                        el.style.left = oriX + 'px';
+                        el.style.top = oriY + 'px';
+                    } else {
+                        thisDiv.style.left = oriX + 'px';
+                        thisDiv.style.top = oriY + 'px';
+                        thisDiv.classList.add('animate');
+                    }
+
+                    //延迟删除动画
+                    setTimeout(() => {
+                        thisDiv.classList.remove('animate');
+                        el.classList.remove('animate');
+                    }, 500)
+                    //重置元素zindex
+                    element.style.zIndex = 0;
                     document.onmousemove = document.onmouseup = null;
                 }
+                return false;
             }
         }
     </script>

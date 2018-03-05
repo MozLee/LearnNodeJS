@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        const box = document.querySelector('#box');
+        let l = false,
+            t = false,
+            r = false,
+            b = false //四个方向 按下未true
+        let timer = null;
+        document.onkeydown = (ev) => {
+            if(timer) return;
+            timer = setInterval(() => {
+                switch (ev.keyCode) {
+                    case 37:
+                        l = true;
+                        break;
+                    case 38:
+                        t = true;
+                        break;
+                    case 39:
+                        t = true;
+                        break;
+                    case 40:
+                        b = true;
+                        break;
+                }
+            },30)
+        }
+    </script>
+</body>
+
+</html>
