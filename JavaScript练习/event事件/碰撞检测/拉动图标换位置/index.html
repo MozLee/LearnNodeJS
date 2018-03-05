@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #wrap {
+            width: 1200px;
+            height: 670px;
+            background: url(img/bg.jpg) no-repeat 0 -50px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #box {
+            width: 639px;
+            height: 380px;
+            position: absolute;
+            left: 281px;
+            top: 164px;
+        }
+
+        #btn {
+            width: 96px;
+            height: 38px;
+            border: 2px solid #fff;
+            border-radius: 4px;
+            font-size: 18px;
+            element-height: 38px;
+            text-align: center;
+            color: #fff;
+            position: absolute;
+            top: 163px;
+            left: 26px;
+        }
+
+        #btn:hover {
+            color: #594da7;
+            background: #fff;
+        }
+
+        #picBox {
+            width: 460px;
+            height: 340px;
+            position: absolute;
+            top: 20px;
+            left: 159px;
+        }
+
+        #picBox div {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            float: left;
+            margin: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="box">
+            <span id="btn">随机</span>
+            <div id="picBox">
+                <div style="background: url(img/rocket.png);"></div>
+                <div style="background: url(img/sport.png);"></div>
+                <div style="background: url(img/music.png);"></div>
+                <div style="background: url(img/play.png);"></div>
+                <div style="background: url(img/travel.png);"></div>
+                <div style="background: url(img/sun.png);"></div>
+                <div style="background: url(img/snow.png);"></div>
+                <div style="background: url(img/coffee.png);"></div>
+                <div style="background: url(img/buy.png);"></div>
+                <div style="background: url(img/ktv.png);"></div>
+                <div style="background: url(img/game.png);"></div>
+                <div style="background: url(img/rain.png);"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getRect(element) {
+            return element.getBoundingClientRect();
+        }
+
+        function isDung(box1, box2) {
+            let getBox1Rect = getRect(box1);
+            let getBox2Rect = getRect(box2);
+            if (
+                getBox1Rect.right < getBox2Rect.left ||
+                getBox1Rect.bottom < getBox2Rect.top ||
+                getBox1Rect.left > getBox2Rect.right ||
+                getBox1Rect.top > getBox2Rect.bottom
+            ) {
+                return false
+            } else {
+                return true;
+            }
+        }
+    </script>
+    <script>
+        let allDiv = document.querySelectorAll('#picBox div');
+        for(let i = 0;i<allDiv.length;i++){
+            change(allDiv[i])
+        }
+        function change(element) {
+            element.onmousedown = function (ev) {
+                let thisDiv = this;
+                let oriX = element.offsetLeft - parseInt(getComputedStyle(this).marginLeft);
+                console.log(oriX);
+                let oriY = element.offsetTop - parseInt(getComputedStyle(this).marginTop);
+                let disX = ev.clientX - element.offsetLeft;
+                let disY = ev.clientY - element.offsetTop;
+
+                document.onmousemove = function (ev) {
+                    element.style.left = ev.clientX - disX + 'px';
+                    element.style.top = ev.clientY - disY + 'px';
+                    let arr = [];
+
+                    // 那些div和拖拽的元素碰上了，就算中心位置最近的
+
+                    for (let i = 0; i < allDiv.length; i++) {
+                        if (isDung(element, allDiv[i])) {
+                            console.log(oriX,oriY);
+                            arr.push(allDiv[i])
+                        } else {
+                            //console.log('没碰上');
+                        }
+                    }
+
+                    // 计算那些碰上元素的中间位置
+                    // 中心点 = 元素到浏览器左边的距离 + 自身宽度的一半
+                    //console.log(arr);
+                    if (arr.length > 0) {
+                        let min = 999999999;
+                        let el = null;
+                        for (let j = 0; j < arr.length; j++) {
+                            //console.log(arr[j]);
+                            let centerX = getRect(arr[j]).left + arr[j].offsetWidth / 2;
+                            let centerY = getRect(arr[j]).top + arr[j].offsetHeight / 2;
+
+                            let elementCenterX = getRect(element).left + element.offsetWidth / 2;
+                            let elementCenterY = getRect(element).top + element.offsetHeight / 2;
+
+                            let z = Math.pow(centerX - elementCenterX, 2) + Math.pow(centerY - elementCenterY,
+                                2)
+                            // 斜边是5000
+                            // 斜边 4000
+                            // 斜边100000
+                            if (z < min) {
+                                min = z;
+                                el = arr[j];
+                            }
+                        }
+
+                        if (el) {
+                            if(el === thisDiv){
+                                console.log(111);
+                                document.onmouseup = function(){
+                                    el.style.left = oriX + "px";
+                                    el.style.top = oriY + 'px';
+                                    document.onmousemove = document.onmouseup = null;
+                                }
+                            }
+                            //el.style.background = 'pink';
+                        }
+                    }
+
+                }
+                document.onmouseup = function (ev) {
+                    document.onmousemove = document.onmouseup = null;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
