@@ -1,0 +1,480 @@
+section,h1,img,a,ul,li{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+body{
+    font-size: 14px;
+    color:#66757f;
+    margin: 0;
+    padding: 0;
+    background: #6e7db2
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/* 主容器样式 */
+.main{
+    width: 1200px;
+    -height: 200px;
+    margin:  0px auto;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #66757f;
+}
+#head{
+    width: 100%;
+    height: 69px;
+    border-bottom: 1px solid #d0d9de;
+    overflow: hidden;
+    position: relative;
+}
+#head .do-info{
+    position: absolute;
+    padding: 10px;
+    border-radius: 15px;
+    color: #fff;
+    left:50%;
+    top: 14px;
+    font-size: 12px;
+    transition: 1s;
+}
+#head .do-info.err{
+    background: #ef8989;
+}
+#head .logo{
+    margin-left: 28px;
+    margin-top: 8px;
+    width: 132px;
+    height: auto;
+}
+
+#head .user-info{
+    margin-right: 30px;
+    height: 69px;
+    width: auto;
+}
+#head .userico{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align:middle;
+}
+#head .user-info .down-arrow-btn{
+    background: url('../imgs/arrowstobottom.png');
+}
+#head .user-info .set-btn{
+    background: url('../imgs/set.png');
+}
+#head .user-info ul li{
+    float: left;
+}
+#head .user-info ul li{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+#head .user-info ul li:nth-last-child{
+    margin-right: 0px;
+}
+.divideico{
+    display: inline-block;
+    width: 1px;
+    height: 22px;
+    background: #d0d9de;
+    vertical-align:middle;   
+}
+/* navbar */
+.navbar{
+    width: 100%;
+    height: 59px;
+    background: #ecf0f6;
+    border-bottom: 1px solid #d0d9de;
+}
+.navbar ul li{
+    float: left;
+}
+.navbar .left-menu{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.navbar .left-menu li{
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #d0d9de;
+    padding: 0px 20px;
+    margin-right: 10px;
+    background: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.navbar .left-menu li:nth-last-child(1){
+    padding: 0px 10px;
+
+}
+.navbar .left-menu i{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 18px;
+}
+/* ico */
+.download-ico{
+    background: url("../imgs/icobar.png") left 0px top 0px;
+}
+.share-ico{
+    background: url("../imgs/icobar.png") left -36px top 0px;    
+}
+.moveto-ico{
+    background: url("../imgs/icobar.png") left -72px top 0px;    
+}
+.rename-ico{
+    background: url("../imgs/icobar.png") left -108px top -1px;    
+}
+.delete-ico{
+    background: url('../imgs/delete.png')
+}
+.newfloder-ico{
+    background: url("../imgs/addfoloder.png") no-repeat;
+}
+/* 清除最后个i的maiginright */
+.navbar .left-menu .refresh-ico{
+    background: url('../imgs/refresh.png');
+    margin-right: 0;
+}
+
+.navbar .right-menu li{
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid #d0d9de;
+    padding: 0px 10px;
+    margin-right: 10px;
+    background: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.navbar .right-menu{
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.navbar .right-menu i{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.upload-ico{
+    background: url('../imgs/uoload.png')
+}
+.sort-ico{
+    background: url('../imgs/sort.png')
+}
+.down-ico{
+    margin-left: 5px;
+    display: inline-block;
+    width: 14px;
+    height: 12px;
+    background: url('../imgs/arrowstobottom.png')
+}
+/* 左侧文件目录 */
+.catalogue{
+    width: 258px;
+    height: 581px;
+    border-right: 1px solid #d0d9de;
+    box-sizing: content-box;
+}
+.catalogue .weiyun{
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+}
+.catalogue ul li{
+    line-height: 30px;
+    display: block;
+}
+.catalogue ul li div{
+    padding-left: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+.catalogue ul li div.active{
+    background: #55addc;
+    color: #fff;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+.catalogue ul li span{
+    display: inline-block;
+    cursor: pointer;
+}
+.catalogue i{
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+} 
+
+.arrow-ico{
+    width: 10px;
+    height: 10px;
+}
+.file-ico{
+    width: 16px;
+    height: 16px;
+}
+.openarrow-ico{
+    background: url('../imgs/arrowopen.png') no-repeat; 
+}
+.openfile-ico{
+    background: url('../imgs/folderopen.png') no-repeat;
+}
+.closearrow-ico{
+    background: url('../imgs/arrowclose.png') no-repeat
+}
+.closefile-ico{
+    background: url('../imgs/folderclose.png') no-repeat
+}
+/* 右侧文件内容 */
+.files-lists{
+    width:941px;
+    height: 582px;                       ;
+}
+.filestitle{
+    width: 941px;
+    height: 48px;
+    line-height: 48px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #d0d9de
+}
+.filestitle ul li {
+    float: left;
+    line-height: 46px;
+    padding: 0 20px;
+}
+.filestitle ul li:nth-child(odd){
+    cursor: pointer;
+}
+#selectall{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d0d9de;
+    margin-top: 14px;
+    margin-left: 14px;
+    margin-right:26px; 
+}
+#selectall.active{
+    background: #55aadc;
+}
+.filestitle  .active{
+    border-bottom: 2px solid #55aadc;
+}
+.filestitle .arrow-li{
+    display: block;
+    width: 10px;
+    height: 48px;
+    padding:  0 2px;
+    background: url('../imgs/arrright.png') no-repeat center;
+}
+/* 文件内容 */
+.files-content{
+    width: 941px;
+    height: 600px;
+    box-sizing: border-box;
+    background: #f5f8fa;
+    overflow: hidden;
+    position: relative;
+}
+.files-content .nofiles{
+    position: absolute;
+    width: 210px;
+    height: 219px;
+    left: 350px;
+    top: 140px;
+}
+.file-container{
+    width: 180px;
+    height: 180px;
+    background: #fff;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 42px 0 0 40px;
+    position: relative;
+    text-align: center;
+    float: left;
+}
+.file-container:hover{
+    /* border-color: #55aadc; */
+    box-shadow: 0px 0px 5px #55aadc;
+}
+.file-container .checkbox{
+    width: 16px;
+    height: 16px;
+    border: 1px solid #d0d9de;
+    position: absolute;
+    left: 10px;
+    top:10px;         
+}
+.file-container.active{
+    box-shadow: 0px 0px 5px #55aadc;
+}
+.file-container .checkbox.active{
+    background: #55addc;
+}
+.file-container .files-ico{
+   margin-top: 35px;
+}
+.file-container .file-name{
+    margin-top: 25px;
+    
+}
+.none{
+    display: none;
+}
+.mouseselect{
+    border: 1px solid #55aadc;
+    background: #55aadc;
+    opacity: .4;
+    position: absolute;
+}
+.del-confirm{
+    position: fixed;
+    width: 320px;
+    height: 180px;
+    border-radius: 10px;
+    border: 2px solid #55aadc;
+    left: 50%;
+    top: 50%;
+    margin-left: -160px;
+    margin-top: -90px;  
+    background: #fff;
+    text-align: center;
+}
+.del-confirm h2{
+    margin-top: 43px;
+}
+.del-confirm button {
+    width: 80px;
+    height: 30px;
+    background: #fff;
+    border:1px solid #55aadc;
+    color: #55aadc;
+    border-radius: 5px;
+}
+.del-confirm button:nth-child(3){
+    margin-right: 25px;
+}
+.del-confirm button.blue{
+    background: #55aadc;
+    color: #fff;
+}
+
+.move{
+    text-align: center;
+    width: 410px;
+    height: 420px;
+    border: 2px solid #55aadc;
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+    top:50%;
+    margin-left:-205px;
+    margin-top: -210px;
+    background: #fff;
+}
+.move h2{
+    text-align: left;    
+    font-size: 16px;
+    margin-left: 22px;
+}
+.move .movelists{
+    text-align: left;    
+    width: 360px;
+    height: 240px;
+    margin: 0 auto;
+    overflow-y: scroll;
+    border: 1px solid #ecf0f6;
+}
+
+.move .weiyun{
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+}
+.move ul li{
+    line-height: 30px;
+    display: block;
+}
+.move ul li div{
+    padding-left: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+.move ul li div.active{
+    background: #55addc;
+    color: #fff;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+.move ul li span{
+    display: inline-block;
+    cursor: pointer;
+}
+.move i{
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+} 
+.move button {
+    width: 80px;
+    height: 30px;
+    background: #fff;
+    border:1px solid #55aadc;
+    color: #55aadc;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.move button:nth-last-child(2){
+    margin-right: 25px;
+}
+.move button.blue{
+    background: #55aadc;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

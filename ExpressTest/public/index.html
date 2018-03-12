@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>云盘</title>
+    <!-- 引入核心样式文件style.css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- 主容器开始 -->
+    <section class="main">
+        <!-- 标题开始 -->
+        <header id="head">
+            <!-- logo开始 -->
+            <h1 class="logo fl">
+                <a href="#">
+                    <img src="./imgs/head-logo.png" alt="">
+                </a>
+            </h1>
+            <div class="do-info none">连接超时123123123</div>
+            <!-- logo结束 -->
+            <!-- 用户信息开始 -->
+            <div class="user-info fr">
+                <!-- 用户信息列表开始 -->
+                <ul>
+                    <li>
+                        <img src="./imgs/head-user.png" alt="">
+                    </li>
+                    <li>
+                        <i class="userico down-arrow-btn"></i>
+                    </li>
+                    <li>
+                        <i class="divideico"></i>
+                    </li>
+                    <li>
+                        <i class="userico set-btn"></i>
+                    </li>
+                </ul>
+                <!-- 用户信息列表结束 -->
+            </div>
+            <!-- 用户信息结束 -->
+        </header>
+        <!-- 标题结束 -->
+        <!-- 导航开始 -->
+        <section class="navbar">
+            <!-- 左侧菜单开始 -->
+            <ul class="left-menu fl">
+                <li>
+                    <i class="download-ico"></i>下载</li>
+                <li>
+                    <i class="share-ico"></i>分享</li>
+                <li id="movefile">
+                    <i class="moveto-ico"></i>移动到</li>
+                <li id="renamefile">
+                    <i class="rename-ico"></i>重命名</li>
+                <li id="delfile">
+                    <i class="delete-ico"></i>删除</li>
+                <li id="newfile">
+                    <i class="newfloder-ico"></i>新建文件夹</li>
+                <li>
+                    <i class="refresh-ico"></i>
+                </li>
+            </ul>
+            <!-- 左侧菜单结束 -->
+            <!-- 右侧菜单开始 -->
+            <ul class="right-menu fr">
+                <li>
+                    <i class="upload-ico"></i>
+                </li>
+                <li>
+                    <i class="sort-ico"></i>
+                    <span class="down-ico"></span>
+                </li>
+            </ul>
+            <!-- 右侧菜单结束 -->
+        </section>
+        <!-- 导航结束 -->
+        <!-- 左侧目录开始 -->
+        <section class="catalogue fl">
+            <ul class="lists">
+                <!-- 根目录开始 -->
+                <li>
+                    <!-- 根目录标题开始 -->
+                    <span class="weiyun">
+                        <i class='arrow-ico openarrow-ico'></i>
+                        <i class="file-ico openfile-ico"></i>微云</span>
+                    <!-- 根目录标结束 -->
+                    <!-- 二级目录开始 -->
+                    <ul>
+                        <li>
+                            <span>
+                                <i class='arrow-ico openarrow-ico'></i>
+                                <i class="file-ico openfile-ico"></i>JS课程</span>
+                            <!-- 三级目录开始 -->
+                            <ul>
+                                <li>
+                                    <span>
+                                        <i class='arrow-ico closearrow-ico'></i>
+                                        <i class="file-ico closefile-ico"></i>123</span>
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class='arrow-ico openarrow-ico'></i>
+                                        <i class="file-ico openfile-ico"></i>CSS课程</span>
+                                    <!-- 四级目录开始 -->
+                                    <ul>
+                                        <li>
+                                            <span>
+                                                <i class='arrow-ico openarrow-ico'></i>
+                                                <i class="file-ico openfile-ico"></i>CSS课程</span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class='arrow-ico openarrow-ico'></i>
+                                                <i class="file-ico openfile-ico"></i>123</span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class='arrow-ico openarrow-ico'></i>
+                                                <i class="file-ico openfile-ico"></i>JS基础课程</span>
+                                        </li>
+                                    </ul>
+                                    <!-- 四级目录结束 -->
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class='arrow-ico openarrow-ico'></i>
+                                        <i class="file-ico openfile-ico"></i>CSS课程</span>
+                                </li>
+                                <li>
+                                    <span>
+                                        <i class='arrow-ico openarrow-ico'></i>
+                                        <i class="file-ico openfile-ico"></i>CSS课程</span>
+                                </li>
+                            </ul>
+                            <!-- 三级目录结束 -->
+                        </li>
+                    </ul>
+                    <!-- 二级目录结束 -->
+                </li>
+                <!-- 根目录结束 -->
+            </ul>
+        </section>
+        <!-- 左侧目录结束 -->
+        <!-- 右侧文件内容开始 -->
+        <section class="files-lists fl">
+            <!-- 标题结构开始 -->
+            <div class="filestitle">
+                <!-- 全选框 -->
+                <div id="selectall" class="fl" data-click='off'></div>
+                <!-- 全选框 -->
+                <!-- 结构列表开始 -->
+                <ul class="fl">
+                    <!-- <li class="active">微云</li>
+                    <li class="arrow-li"></li>
+                    <li>JS课程</li>
+                    <li class="arrow-li"></li>
+                    <li>CSS课程</li> -->
+                </ul>
+                <!-- 结构列表开始 -->
+            </div>
+            <!-- 标题结构结束 -->
+            <!-- 文件内容开始 -->
+            <div class="files-content">
+                <div class="file-container">
+                    <div class="checkbox none"></div>
+                    <img class="files-ico" src="./imgs/folder-ico.png" alt="file-ico">
+                    <p class="file-name">JS基础课程</p>
+                </div>
+                <div class="nofiles">
+                    <img src="./imgs/nofiles.png" />
+                </div>
+            </div>
+            <!-- 文件内容结束 -->
+        </section>
+        <!-- 右侧文件内容结束 -->
+    </section>
+    <!-- 主容器结束 -->
+    <!-- 删除确认模态框 -->
+    <div class="del-confirm none">
+        <h2>确认要删除文件夹吗？</h2>
+        <p>删除的文件夹可在回收站找到</p>
+        <button id="delconfirm" class="blue">确认</button>
+        <button id="delcancel">取消</button>
+    </div>
+    <!-- 移动到模态框     -->
+    <div class="move none">
+        <h2>选择储存位置</h2>
+        <h2 class="position">当前位置</h2>
+        <div class="movelists">
+
+        </div>
+        <button class="blue" id="moveconfirm">确定</button>
+        <button id="movecancel">取消</button>
+    </div>
+    <!-- 加载数据 -->
+    <script src="./js/data.js"></script>
+    <!-- 加载核心js -->
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
