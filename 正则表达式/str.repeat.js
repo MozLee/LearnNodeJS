@@ -4,6 +4,6 @@ let re = /w+/g;
 //     return '*'.repeat(item.length);
 // })
 
-let newStr = str.replace(re,item=> '*'.repeat(item.length));
+let newStr = str.replace(re, item => '*'.repeat(item.length));
 
 console.log(newStr);

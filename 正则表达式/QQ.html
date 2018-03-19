@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>验证QQ</title>
+</head>
+
+<body>
+    <input type="number" name="qq" id="qq">
+    <p id="p"></p>
+    <script>
+        let qqInput = document.querySelector("#qq");
+        let tips = document.querySelector('#p');
+
+        qqInput.oninput = () => {
+            let qqRe = /^[1-9]\d{4,11}$/g;
+            if (qqRe.test(qqInput.value)) {
+                tips.innerHTML = `<span style="color:green">正确</span>`
+            } else {
+                tips.innerHTML =
+                    `<span style="color:red">请输入正确的QQ号，非0开头，5-12位.</span></br>当前QQ长度：${qqInput.value.length}位`
+            }
+        }
+    </script>
+</body>
+
+</html>
