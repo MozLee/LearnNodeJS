@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="email">
+    <p id="p"></p>
+    <button id="btn">检测</button>
+    <script>
+        const email = document.querySelector('#email');
+        const p = document.querySelector('#p');
+        const btn = document.querySelector("#btn");
+        btn.onclick = () => {
+            let re = /^[a-zA-Z0-9_]+@[a-zA-Z0-9_]{2,5}(\.[a-z]{2,5}){1,3}$/g
+            if(re.test(email.value)){
+                p.innerHTML=`输入正确`;
+            }else{
+                p.innerHTML=`邮箱格式错误`;
+            }
+            // console.log(re.test(`1@qq.com.cm.cm.cm`));
+        }
+        // console.log(re.test('68879747@qq.com.cmn.cd.cd'));
+    </script>
+</body>
+</html>
