@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #div1{
+        width: 100px;
+        height: 100px;
+        background: #0eb0f6;
+        position: absolute;
+    }
+    #div2{
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 150px;
+    }
+    #div3{
+        width: 100px;
+        height: 100px;
+        background: #ff6347;
+        position: absolute;
+        left: 150px;
+        top:300px;
+    }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <script src="./drag.js"></script>
+    <script>
+    let div1 = document.querySelector('#div1');
+    let div2 = document.querySelector('#div2');
+    
+    let d = new Drag(div1);
+    let d2 = new Drag(div2);
+    let d3 = new Drag(div3);
+    </script>
+</body>
+</html>

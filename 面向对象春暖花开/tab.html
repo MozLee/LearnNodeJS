@@ -52,9 +52,14 @@
         let box1 = document.querySelector('#box1');
         let box2 = document.querySelector('#box2');
         let btn = document.querySelector('#stop');
-        let t = new Tab(box1);
-        let t2 = new Tab(box2);
-        t2.autoPlay();
+        let t = new Tab({
+            parent:box1,
+        });
+        let t2 = new Tab({
+            parent:box2,
+            time:100,
+            auto:true
+        });
 
         btn.onclick = () => {
             if (btn.dataset.play === 'auto') {

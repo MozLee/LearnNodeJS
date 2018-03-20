@@ -1,9 +1,13 @@
-function Tab(parent) {
+function Tab(params) {
+    let {parent,auto = false,time = 1000} = params;
+    if(!parent) throw console.error('没有传入关键参数parent');
     this.btns = parent.querySelectorAll('button');
     this.divs = parent.querySelectorAll('div');
     this.len = this.btns.length;
     this.n = 0;
     this.timer = null;
+    this.auto = auto;
+    this.time = time;
     //自动初始化
     this.init();
 }
@@ -19,6 +23,7 @@ Tab.prototype.init = function () {
             this.play(i);
         }
     }
+    if(this.auto) this.autoPlay();
 }
 
 //切换
@@ -39,7 +44,7 @@ Tab.prototype.autoPlay = function () {
         this.n++;
         if(this.n>this.len-1) this.n = 0;
         this.play(this.n);    
-    },1000)
+    },this.time)
 }
 
 //检测是否在autoplay
