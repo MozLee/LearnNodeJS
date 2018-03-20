@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container div {
+            width: 160px;
+            height: 160px;
+            border: 1px solid #0eb0f6;
+            display: none;
+            font-size: 30px;
+            text-align: center;
+            line-height: 160px;
+            margin-top: 10px;
+        }
+
+        .container button {
+            width: 50px;
+        }
+
+        .container button.active {
+            background: #0eb0f6;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box1' class="container">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <div id='box2' class="container">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+    <button id="stop" data-play='auto'>停止自动运行</button>
+    <script src="./tab.js"></script>
+    <script>
+        let box1 = document.querySelector('#box1');
+        let box2 = document.querySelector('#box2');
+        let btn = document.querySelector('#stop');
+        let t = new Tab(box1);
+        let t2 = new Tab(box2);
+        t2.autoPlay();
+
+        btn.onclick = () => {
+            if (btn.dataset.play === 'auto') {
+                t2.stopAutoPlay();
+                btn.setAttribute('data-play','stop');
+                btn.innerHTML = '开始自动运行';
+            }else{
+                t2.autoPlay();
+                btn.setAttribute('data-play','auto');
+                btn.innerHTML = '停止自动运行';                
+            }
+
+        }
+    </script>
+</body>
+
+</html>

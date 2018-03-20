@@ -13,3 +13,5 @@ ggcar.run();
 console.log(ggcar.__proto__);
 console.log(ggcar.__proto__.__proto__);
 console.log(ggcar.__proto__.__proto__.__proto__);
+console.log(ggcar.__proto__  === Car.prototype);
+console.log(ggcar.__proto__.__proto__=== Object.prototype);
