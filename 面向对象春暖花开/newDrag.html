@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+
+        #div1 {
+            background: #ff6347;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"> </div>
+    <script src="./subscribe-drag.js"></script>
+    <script>
+        let ele = document.getElementById('div1')
+        console.log(ele);
+        let d = new Drag(div1);
+        d.on('m-down',() => {
+            console.log('鼠标按下了');
+            d.el.style.background = '#14a2f6';
+        })
+        d.on('m-move',() => {
+            console.log('鼠标移动了');
+            d.el.style.background = '#9acd32';
+        })
+        d.on('m-up',() => {
+            console.log('鼠标抬起了');
+            d.el.style.background = '#ff6347';
+        })
+    </script>
+</body>
+
+</html>
