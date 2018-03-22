@@ -24,7 +24,7 @@ class Subscribe {
      */
     trigger(subscriber, ...params) {
         let users = this.subscribersInfo[subscriber];
-        if(users){
+        if (users) {
             for (let i = 0; i < users.length; i++) {
                 const element = users[i];
                 element(...params);
@@ -52,7 +52,6 @@ class Drag extends Subscribe {
         super();
         this.el = dragElement;
         this.init();
-        
     }
     //初始化
     init() {
@@ -60,7 +59,7 @@ class Drag extends Subscribe {
         this.el.onmousedown = (ev) => {
             this.disX = ev.clientX - this.el.offsetLeft;
             this.disY = ev.clientY - this.el.offsetTop;
-            this.trigger('m-down','鼠标按下');
+            this.trigger('m-down', '鼠标按下');
             document.onmousemove = (ev) => {
                 this.move(ev);
             }
@@ -73,13 +72,12 @@ class Drag extends Subscribe {
     move(ev) {
         this.el.style.left = ev.clientX - this.disX + 'px';
         this.el.style.top = ev.clientY - this.disY + 'px';
-        this.trigger('m-move','鼠标移动');
-        
+        this.trigger('m-move', '鼠标移动');
+
     }
     //鼠标抬起
     up(ev) {
         document.onmousemove = document.onmouseup = null;
-        this.trigger('m-up','鼠标抬起');
-        
+        this.trigger('m-up', '鼠标抬起');
     }
 }

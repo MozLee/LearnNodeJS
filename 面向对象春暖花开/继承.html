@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function Person (name,age) {
+             this.name = name;
+             this.age = age;
+         }
+         Person.prototype.say = function(){
+             console.log("this.name,this.age");
+         }
+         let p  = new Person();
+         console.log(p);
+         function Coder(name,age,money) {
+             this.money = money;
+         }
+         Coder.prototype = new Person();
+         let c = new Coder('lixin','22','120000');
+   
+         console.log(c);
+         c.say();
+    </script>
+</body>
+</html>

@@ -16,6 +16,9 @@
         #div1 {
             background: #ff6347;
         } 
+        div.active{
+            border-radius: 50%;
+        }
     </style>
 </head>
 
@@ -33,10 +36,12 @@
         d.on('m-move',() => {
             console.log('鼠标移动了');
             d.el.style.background = '#9acd32';
+            d.el.classList.add('active');
         })
         d.on('m-up',() => {
             console.log('鼠标抬起了');
             d.el.style.background = '#ff6347';
+            d.el.classList.remove('active');            
         })
     </script>
 </body>
