@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-    function Foo (name) {
-        // body
-        this.name = name;
-    }    
-    Foo.prototype.say = function () {
-        console.log(this.name);
-    }
-    let f = new Foo('lixin')
-    console.log(f)
-    console.log(f.__proto__ === Foo.prototype);
-    console.log(Foo.prototype);
+        function Foo(name) {
+            // body
+            this.name = name;
+        }
+        Foo.prototype = {
+            constructor:Foo,
+            say() {
+                console.log(this.name);
+            }
+        }
+        // Foo.prototype.say = function () {
+        //     console.log(this.name);
+        // }
+        let f = new Foo('lixin')
+        f.say()
+        // console.dir(f)
+        // console.log(f.__proto__ === Foo.prototype);
+        console.log(f);
     </script>
 </body>
+
 </html>
