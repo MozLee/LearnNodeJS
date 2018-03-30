@@ -4,8 +4,14 @@ function add (a,b) {
     return new Promise(function(resolve, reject) {
         setTimeout(() => {
             let num = a + b;
-            console.log(`成功`);
+            let r = Math.random()*10
+            if(r>5){
+                console.log(`成功`);
             resolve(num);
+            }else{
+                reject(`失败`);
+            }
+            
         },2000)
     });
 }
